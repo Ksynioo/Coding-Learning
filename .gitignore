@@ -1,0 +1,17 @@
+# ignore all .log files
+*.log
+# ignore all .tlog files
+*.tlog
+# ignore all .recipe files
+*.recipe
+# ignore all .cache files
+*.cache
+# ignore all FileListAbsolute.txt files
+*.FileListAbsolute.txt
+# ignore all FileListAbsolute.txt files
+*.depend
+# ignore all files from folder tlog
+tlog/
+# ignore all files from folder .vs
+.vs/
+

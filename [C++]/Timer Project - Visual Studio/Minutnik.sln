@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Minutnik", "Minutnik.vcxproj", "{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Debug|x64.ActiveCfg = Debug|x64
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Debug|x64.Build.0 = Debug|x64
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Debug|x86.ActiveCfg = Debug|Win32
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Debug|x86.Build.0 = Debug|Win32
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Release|x64.ActiveCfg = Release|x64
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Release|x64.Build.0 = Release|x64
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Release|x86.ActiveCfg = Release|Win32
+		{62EB73AD-9C48-430B-A06B-BEE5D9AEB1DC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B47782BC-171F-4517-8859-04F522B6DE67}
+	EndGlobalSection
+EndGlobal
