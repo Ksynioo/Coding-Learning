@@ -1,0 +1,15 @@
+body
+{
+    background-color: lightblue;
+}
+h1
+{
+    color: black;
+    border: 2px solid red;
+}
+p
+{
+    color:black;
+    border: 5px solid red;
+    border-radius: 10px;
+}
