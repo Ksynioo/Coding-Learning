@@ -1,0 +1,25 @@
+body
+{
+    background-color: lightblue;
+}
+h1
+{
+    color: black;
+    border: 2px solid red;
+    background-color: royalblue;
+    margin-left:20px ;
+    padding-left: 20px;
+    height: 200px;
+    width: 50%;
+}
+p
+{
+    color:black;
+    border: 5px solid red;
+    background-color: royalblue;
+    border-radius: 10px;
+    margin-left: 50px;
+    padding-left: 50px;
+    height: 200px;
+    width: 75%;
+}
