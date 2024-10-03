@@ -1,0 +1,14 @@
+body
+{
+    color: white;
+    text-shadow: 2px 2px black;
+    background-color: darkslategray;
+}
+.unordered
+{
+    list-style-type: upper-roman;
+}
+.ordered
+{
+    list-style-type: upper-roman;
+}
