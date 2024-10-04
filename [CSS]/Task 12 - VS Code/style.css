@@ -1,0 +1,23 @@
+body
+{
+    color: white;
+    text-shadow: 2px 2px black;
+    background-color: darkslategray;
+}
+table
+{
+    border: 1px black solid;
+    text-align: center;
+}
+th
+{
+    border: 1px black solid;
+}
+tr
+{
+    border: 1px black solid;
+}
+td
+{
+    border: 1px black solid;
+}
