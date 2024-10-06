@@ -14,6 +14,9 @@ namespace CirclesAndCrosses {
 	/// </summary>
 	public ref class CirclesAndCrosses : public System::Windows::Forms::Form
 	{
+
+		bool clicked = true;
+
 	public:
 		CirclesAndCrosses(void)
 		{
@@ -42,15 +45,25 @@ namespace CirclesAndCrosses {
 	private: System::Windows::Forms::Label^ labelO1;
 	private: System::Windows::Forms::Button^ btnNewGame;
 	private: System::Windows::Forms::Button^ btnReset;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::PictureBox^ pictureBox4;
-	private: System::Windows::Forms::PictureBox^ pictureBox5;
-	private: System::Windows::Forms::PictureBox^ pictureBox6;
-	private: System::Windows::Forms::PictureBox^ pictureBox7;
-	private: System::Windows::Forms::PictureBox^ pictureBox8;
-	private: System::Windows::Forms::PictureBox^ pictureBox9;
+	private: System::Windows::Forms::PictureBox^ A1;
+	private: System::Windows::Forms::PictureBox^ B1;
+	private: System::Windows::Forms::PictureBox^ C1;
+	private: System::Windows::Forms::PictureBox^ A2;
+	private: System::Windows::Forms::PictureBox^ B2;
+	private: System::Windows::Forms::PictureBox^ C2;
+	private: System::Windows::Forms::PictureBox^ A3;
+	private: System::Windows::Forms::PictureBox^ B3;
+	private: System::Windows::Forms::PictureBox^ C3;
+
+
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::ImageList^ imageList1;
 	private: System::ComponentModel::IContainer^ components;
 
@@ -76,25 +89,25 @@ namespace CirclesAndCrosses {
 			this->labelO1 = (gcnew System::Windows::Forms::Label());
 			this->btnNewGame = (gcnew System::Windows::Forms::Button());
 			this->btnReset = (gcnew System::Windows::Forms::Button());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox9 = (gcnew System::Windows::Forms::PictureBox());
+			this->A1 = (gcnew System::Windows::Forms::PictureBox());
+			this->B1 = (gcnew System::Windows::Forms::PictureBox());
+			this->C1 = (gcnew System::Windows::Forms::PictureBox());
+			this->A2 = (gcnew System::Windows::Forms::PictureBox());
+			this->B2 = (gcnew System::Windows::Forms::PictureBox());
+			this->C2 = (gcnew System::Windows::Forms::PictureBox());
+			this->A3 = (gcnew System::Windows::Forms::PictureBox());
+			this->B3 = (gcnew System::Windows::Forms::PictureBox());
+			this->C3 = (gcnew System::Windows::Forms::PictureBox());
 			this->imageList1 = (gcnew System::Windows::Forms::ImageList(this->components));
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// labelX1
@@ -153,104 +166,113 @@ namespace CirclesAndCrosses {
 			this->btnReset->Text = L"Reset";
 			this->btnReset->UseVisualStyleBackColor = true;
 			// 
-			// pictureBox1
+			// A1
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(16, 23);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(64, 64);
-			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox1->TabIndex = 6;
-			this->pictureBox1->TabStop = false;
+			this->A1->BackColor = System::Drawing::Color::Transparent;
+			this->A1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A1.Image")));
+			this->A1->Location = System::Drawing::Point(16, 23);
+			this->A1->Name = L"A1";
+			this->A1->Size = System::Drawing::Size(64, 64);
+			this->A1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->A1->TabIndex = 6;
+			this->A1->TabStop = false;
+			this->A1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox2
+			// B1
 			// 
-			this->pictureBox2->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(118, 23);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(64, 64);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox2->TabIndex = 7;
-			this->pictureBox2->TabStop = false;
+			this->B1->BackColor = System::Drawing::Color::Transparent;
+			this->B1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.Image")));
+			this->B1->Location = System::Drawing::Point(118, 23);
+			this->B1->Name = L"B1";
+			this->B1->Size = System::Drawing::Size(64, 64);
+			this->B1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->B1->TabIndex = 7;
+			this->B1->TabStop = false;
+			this->B1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox3
+			// C1
 			// 
-			this->pictureBox3->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(214, 23);
-			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(64, 64);
-			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox3->TabIndex = 8;
-			this->pictureBox3->TabStop = false;
+			this->C1->BackColor = System::Drawing::Color::Transparent;
+			this->C1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C1.Image")));
+			this->C1->Location = System::Drawing::Point(214, 23);
+			this->C1->Name = L"C1";
+			this->C1->Size = System::Drawing::Size(64, 64);
+			this->C1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->C1->TabIndex = 8;
+			this->C1->TabStop = false;
+			this->C1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox4
+			// A2
 			// 
-			this->pictureBox4->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(16, 120);
-			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(64, 64);
-			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox4->TabIndex = 9;
-			this->pictureBox4->TabStop = false;
+			this->A2->BackColor = System::Drawing::Color::Transparent;
+			this->A2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A2.Image")));
+			this->A2->Location = System::Drawing::Point(16, 120);
+			this->A2->Name = L"A2";
+			this->A2->Size = System::Drawing::Size(64, 64);
+			this->A2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->A2->TabIndex = 9;
+			this->A2->TabStop = false;
+			this->A2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox5
+			// B2
 			// 
-			this->pictureBox5->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(118, 120);
-			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(64, 64);
-			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox5->TabIndex = 10;
-			this->pictureBox5->TabStop = false;
+			this->B2->BackColor = System::Drawing::Color::Transparent;
+			this->B2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.Image")));
+			this->B2->Location = System::Drawing::Point(118, 120);
+			this->B2->Name = L"B2";
+			this->B2->Size = System::Drawing::Size(64, 64);
+			this->B2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->B2->TabIndex = 10;
+			this->B2->TabStop = false;
+			this->B2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox6
+			// C2
 			// 
-			this->pictureBox6->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
-			this->pictureBox6->Location = System::Drawing::Point(214, 120);
-			this->pictureBox6->Name = L"pictureBox6";
-			this->pictureBox6->Size = System::Drawing::Size(64, 64);
-			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox6->TabIndex = 11;
-			this->pictureBox6->TabStop = false;
+			this->C2->BackColor = System::Drawing::Color::Transparent;
+			this->C2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C2.Image")));
+			this->C2->Location = System::Drawing::Point(214, 120);
+			this->C2->Name = L"C2";
+			this->C2->Size = System::Drawing::Size(64, 64);
+			this->C2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->C2->TabIndex = 11;
+			this->C2->TabStop = false;
+			this->C2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox7
+			// A3
 			// 
-			this->pictureBox7->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(16, 214);
-			this->pictureBox7->Name = L"pictureBox7";
-			this->pictureBox7->Size = System::Drawing::Size(64, 64);
-			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox7->TabIndex = 12;
-			this->pictureBox7->TabStop = false;
+			this->A3->BackColor = System::Drawing::Color::Transparent;
+			this->A3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"A3.Image")));
+			this->A3->Location = System::Drawing::Point(16, 214);
+			this->A3->Name = L"A3";
+			this->A3->Size = System::Drawing::Size(64, 64);
+			this->A3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->A3->TabIndex = 12;
+			this->A3->TabStop = false;
+			this->A3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox8
+			// B3
 			// 
-			this->pictureBox8->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(118, 214);
-			this->pictureBox8->Name = L"pictureBox8";
-			this->pictureBox8->Size = System::Drawing::Size(64, 64);
-			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox8->TabIndex = 13;
-			this->pictureBox8->TabStop = false;
+			this->B3->BackColor = System::Drawing::Color::Transparent;
+			this->B3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.Image")));
+			this->B3->Location = System::Drawing::Point(118, 214);
+			this->B3->Name = L"B3";
+			this->B3->Size = System::Drawing::Size(64, 64);
+			this->B3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->B3->TabIndex = 13;
+			this->B3->TabStop = false;
+			this->B3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
-			// pictureBox9
+			// C3
 			// 
-			this->pictureBox9->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.Image")));
-			this->pictureBox9->Location = System::Drawing::Point(214, 214);
-			this->pictureBox9->Name = L"pictureBox9";
-			this->pictureBox9->Size = System::Drawing::Size(64, 64);
-			this->pictureBox9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-			this->pictureBox9->TabIndex = 14;
-			this->pictureBox9->TabStop = false;
+			this->C3->BackColor = System::Drawing::Color::Transparent;
+			this->C3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"C3.Image")));
+			this->C3->Location = System::Drawing::Point(214, 214);
+			this->C3->Name = L"C3";
+			this->C3->Size = System::Drawing::Size(64, 64);
+			this->C3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->C3->TabIndex = 14;
+			this->C3->TabStop = false;
+			this->C3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// imageList1
 			// 
@@ -268,15 +290,15 @@ namespace CirclesAndCrosses {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(301, 401);
-			this->Controls->Add(this->pictureBox9);
-			this->Controls->Add(this->pictureBox8);
-			this->Controls->Add(this->pictureBox7);
-			this->Controls->Add(this->pictureBox6);
-			this->Controls->Add(this->pictureBox5);
-			this->Controls->Add(this->pictureBox4);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->C3);
+			this->Controls->Add(this->B3);
+			this->Controls->Add(this->A3);
+			this->Controls->Add(this->C2);
+			this->Controls->Add(this->B2);
+			this->Controls->Add(this->A2);
+			this->Controls->Add(this->C1);
+			this->Controls->Add(this->B1);
+			this->Controls->Add(this->A1);
 			this->Controls->Add(this->btnReset);
 			this->Controls->Add(this->btnNewGame);
 			this->Controls->Add(this->labelO2);
@@ -287,15 +309,15 @@ namespace CirclesAndCrosses {
 			this->Name = L"CirclesAndCrosses";
 			this->Text = L"CirclesAndCrosses";
 			this->Load += gcnew System::EventHandler(this, &CirclesAndCrosses::CirclesAndCrosses_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->A3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->C3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -307,5 +329,23 @@ namespace CirclesAndCrosses {
 	}
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
+
+	PictureBox^ image = (PictureBox^)sender;
+
+
+	if (clicked)
+	{
+		image->Image = imageList1->Images[1];
+	}
+	else
+	{
+		image->Image = imageList1->Images[2];
+	}
+	
+	clicked =! clicked;
+	image->Enabled = false;
+}
+
 };
 }

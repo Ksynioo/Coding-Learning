@@ -1,0 +1,31 @@
+body
+{
+    color: white;
+    text-shadow: 2px 2px black;
+    background-color: darkslategray;
+}
+table
+{
+    min-width: 250px;
+    max-width:500px;
+    border: 1px black solid;
+    text-align: center;
+}
+th
+{
+    min-width: 250px;
+    max-width:500px;
+    border: 1px black solid;
+}
+tr
+{
+    min-width: 250px;
+    max-width:500px;
+    border: 1px black solid;
+}
+td
+{
+    min-width: 250px;
+    max-width:500px;
+    border: 1px black solid;
+}
