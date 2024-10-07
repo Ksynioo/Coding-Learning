@@ -1,0 +1,18 @@
+body
+{
+    color: white;
+    text-shadow: 2px 2px black;
+    background-color: darkslategray;
+}
+#sticky
+{
+    border: 1px black solid;
+    position:sticky;
+    top: 0;
+}
+#background
+{
+    border: 2px black solid;
+    width: 1000px;
+    height: 2000px;
+}

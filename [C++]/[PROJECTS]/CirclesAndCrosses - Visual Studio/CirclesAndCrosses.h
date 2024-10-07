@@ -16,6 +16,7 @@ namespace CirclesAndCrosses {
 	{
 
 		bool clicked = true;
+		bool win = false;
 
 	public:
 		CirclesAndCrosses(void)
@@ -176,6 +177,7 @@ namespace CirclesAndCrosses {
 			this->A1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->A1->TabIndex = 6;
 			this->A1->TabStop = false;
+			this->A1->Tag = L"\?";
 			this->A1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// B1
@@ -188,6 +190,7 @@ namespace CirclesAndCrosses {
 			this->B1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->B1->TabIndex = 7;
 			this->B1->TabStop = false;
+			this->B1->Tag = L"\?";
 			this->B1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// C1
@@ -200,6 +203,7 @@ namespace CirclesAndCrosses {
 			this->C1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->C1->TabIndex = 8;
 			this->C1->TabStop = false;
+			this->C1->Tag = L"\?";
 			this->C1->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// A2
@@ -212,6 +216,7 @@ namespace CirclesAndCrosses {
 			this->A2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->A2->TabIndex = 9;
 			this->A2->TabStop = false;
+			this->A2->Tag = L"\?";
 			this->A2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// B2
@@ -224,6 +229,7 @@ namespace CirclesAndCrosses {
 			this->B2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->B2->TabIndex = 10;
 			this->B2->TabStop = false;
+			this->B2->Tag = L"\?";
 			this->B2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// C2
@@ -236,6 +242,7 @@ namespace CirclesAndCrosses {
 			this->C2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->C2->TabIndex = 11;
 			this->C2->TabStop = false;
+			this->C2->Tag = L"\?";
 			this->C2->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// A3
@@ -248,6 +255,7 @@ namespace CirclesAndCrosses {
 			this->A3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->A3->TabIndex = 12;
 			this->A3->TabStop = false;
+			this->A3->Tag = L"\?";
 			this->A3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// B3
@@ -260,6 +268,7 @@ namespace CirclesAndCrosses {
 			this->B3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->B3->TabIndex = 13;
 			this->B3->TabStop = false;
+			this->B3->Tag = L"\?";
 			this->B3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// C3
@@ -272,6 +281,7 @@ namespace CirclesAndCrosses {
 			this->C3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			this->C3->TabIndex = 14;
 			this->C3->TabStop = false;
+			this->C3->Tag = L"\?";
 			this->C3->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::play);
 			// 
 			// imageList1
@@ -337,15 +347,35 @@ private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 	if (clicked)
 	{
 		image->Image = imageList1->Images[1];
+		image->Tag = "X";
 	}
 	else
 	{
 		image->Image = imageList1->Images[2];
+		image->Tag = "O";
 	}
 	
 	clicked =! clicked;
 	image->Enabled = false;
+	winning();
 }
+	   private: Void winning()
+	   {
+		   //checking win in horizontal axis
+		   if ((A1->Tag == B1->Tag) &&	 (B1->Tag ==	 C1->Tag)	&&  (A1->Tag != "?")) win = true;
+		   if ((A2->Tag == B2->Tag) && (B2->Tag == C2->Tag) && (A2->Tag != "?")) win = true;
+		   if ((A3->Tag == B3->Tag) && (B3->Tag == C3->Tag) && (A3->Tag != "?")) win = true;
+
+		   //checking win in vertical axis
+		   if ((A1->Tag == A2->Tag) && (A2->Tag == A3->Tag) && (A1->Tag != "?")) win = true;
+		   if ((B1->Tag == B2->Tag) && (B2->Tag == B3->Tag) && (B1->Tag != "?")) win = true;
+		   if ((C1->Tag == C2->Tag) && (C2->Tag == C3->Tag) && (C1->Tag != "?")) win = true;
+
+		   //checking win in diagonal axis
+		   if ((A1->Tag == B2->Tag) && (B2->Tag == C3->Tag) && (A1->Tag != "?")) win = true;
+		   if ((C1->Tag == B2->Tag) && (B2->Tag == A3->Tag) && (C1->Tag != "?")) win = true;
+	   }
+
 
 };
 }
