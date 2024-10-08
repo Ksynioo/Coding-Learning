@@ -374,6 +374,12 @@ private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 		   //checking win in diagonal axis
 		   if ((A1->Tag == B2->Tag) && (B2->Tag == C3->Tag) && (A1->Tag != "?")) win = true;
 		   if ((C1->Tag == B2->Tag) && (B2->Tag == A3->Tag) && (C1->Tag != "?")) win = true;
+		   
+		   if (win)
+		   {
+			   MessageBox::Show("Win!", "Circles and Crosses", MessageBoxButtons::OK, MessageBoxIcon::Information, MessageBoxDefaultButton::Button1, MessageBoxOptions::DefaultDesktopOnly);
+		   }
+
 	   }
 
 

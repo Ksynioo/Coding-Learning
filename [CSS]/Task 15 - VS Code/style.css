@@ -1,0 +1,13 @@
+body
+{
+    color: white;
+    text-shadow: 2px 2px black;
+    background-color: darkslategray;
+}
+img
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
