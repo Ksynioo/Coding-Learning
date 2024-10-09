@@ -377,6 +377,11 @@ private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 		   
 		   if (win)
 		   {
+			   for each (Control ^ element in this->Controls)
+			   {
+				   if(element->GetType() == PictureBox::typeid)
+						element->Enabled = false;
+			   }
 			   MessageBox::Show("Win!", "Circles and Crosses");
 		   }
 
