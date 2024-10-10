@@ -157,6 +157,7 @@ namespace CirclesAndCrosses {
 			this->btnNewGame->TabIndex = 4;
 			this->btnNewGame->Text = L"New Game";
 			this->btnNewGame->UseVisualStyleBackColor = true;
+			this->btnNewGame->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::btnNewGame_Click);
 			// 
 			// btnReset
 			// 
@@ -380,7 +381,7 @@ private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 			   for each (Control ^ element in this->Controls)
 			   {
 				   if(element->GetType() == PictureBox::typeid)
-						element->Enabled = false;
+					   element->Enabled = false;
 			   }
 			   MessageBox::Show("Win!", "Circles and Crosses");
 		   }
@@ -388,5 +389,22 @@ private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 	   }
 
 
+private: System::Void btnNewGame_Click(System::Object^ sender, System::EventArgs^ e) {\
+	for each (Control ^ element in this->Controls)
+	{
+		try
+		{
+			PictureBox^ image = (PictureBox^)element;
+			image->Enabled = true;
+			image->Tag = "?";
+			image->Image = imageList1->Images[0];
+		}
+		catch (...)
+		{
+
+		}
+	
+	}
+}
 };
 }
