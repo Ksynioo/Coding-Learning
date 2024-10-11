@@ -16,7 +16,10 @@ namespace CirclesAndCrosses {
 	{
 
 		bool clicked = true;
-		bool win = false;
+		bool winner = false;
+		int counterX = 0;
+		int counterO = 0;
+		String^ master = " ";
 
 	public:
 		CirclesAndCrosses(void)
@@ -167,6 +170,7 @@ namespace CirclesAndCrosses {
 			this->btnReset->TabIndex = 5;
 			this->btnReset->Text = L"Reset";
 			this->btnReset->UseVisualStyleBackColor = true;
+			this->btnReset->Click += gcnew System::EventHandler(this, &CirclesAndCrosses::btnReset_Click);
 			// 
 			// A1
 			// 
@@ -340,71 +344,92 @@ namespace CirclesAndCrosses {
 	}
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	
+
+
 private: System::Void play(System::Object^ sender, System::EventArgs^ e) {
 
 	PictureBox^ image = (PictureBox^)sender;
 
-
-	if (clicked)
-	{
+	if (clicked){
 		image->Image = imageList1->Images[1];
 		image->Tag = "X";
 	}
-	else
-	{
+	else{
 		image->Image = imageList1->Images[2];
 		image->Tag = "O";
 	}
 	
-	clicked =! clicked;
+	clicked = !clicked;
 	image->Enabled = false;
 	winning();
 }
 	   private: Void winning()
 	   {
 		   //checking win in horizontal axis
-		   if ((A1->Tag == B1->Tag) &&	 (B1->Tag ==	 C1->Tag)	&&  (A1->Tag != "?")) win = true;
-		   if ((A2->Tag == B2->Tag) && (B2->Tag == C2->Tag) && (A2->Tag != "?")) win = true;
-		   if ((A3->Tag == B3->Tag) && (B3->Tag == C3->Tag) && (A3->Tag != "?")) win = true;
+		   if ((A1->Tag == B1->Tag) &&	 (B1->Tag ==	 C1->Tag)	&&  (A1->Tag != "?")) winner = true;
+		   if ((A2->Tag == B2->Tag) && (B2->Tag == C2->Tag) && (A2->Tag != "?")) winner = true;
+		   if ((A3->Tag == B3->Tag) && (B3->Tag == C3->Tag) && (A3->Tag != "?")) winner = true;
 
 		   //checking win in vertical axis
-		   if ((A1->Tag == A2->Tag) && (A2->Tag == A3->Tag) && (A1->Tag != "?")) win = true;
-		   if ((B1->Tag == B2->Tag) && (B2->Tag == B3->Tag) && (B1->Tag != "?")) win = true;
-		   if ((C1->Tag == C2->Tag) && (C2->Tag == C3->Tag) && (C1->Tag != "?")) win = true;
+		   if ((A1->Tag == A2->Tag) && (A2->Tag == A3->Tag) && (A1->Tag != "?")) winner = true;
+		   if ((B1->Tag == B2->Tag) && (B2->Tag == B3->Tag) && (B1->Tag != "?")) winner = true;
+		   if ((C1->Tag == C2->Tag) && (C2->Tag == C3->Tag) && (C1->Tag != "?")) winner = true;
 
 		   //checking win in diagonal axis
-		   if ((A1->Tag == B2->Tag) && (B2->Tag == C3->Tag) && (A1->Tag != "?")) win = true;
-		   if ((C1->Tag == B2->Tag) && (B2->Tag == A3->Tag) && (C1->Tag != "?")) win = true;
+		   if ((A1->Tag == B2->Tag) && (B2->Tag == C3->Tag) && (A1->Tag != "?")) winner = true;
+		   if ((C1->Tag == B2->Tag) && (B2->Tag == A3->Tag) && (C1->Tag != "?")) winner = true;
 		   
-		   if (win)
-		   {
-			   for each (Control ^ element in this->Controls)
+		   if (winner){
+			   for each (Control^ element in this->Controls)
 			   {
-				   if(element->GetType() == PictureBox::typeid)
-					   element->Enabled = false;
+				   if(element->GetType() == PictureBox::typeid) element->Enabled = false;
 			   }
-			   MessageBox::Show("Win!", "Circles and Crosses");
+
+			   if (clicked){
+				   counterO++;
+				   labelO2->Text = Convert::ToString(counterO);
+				   master = "O";
+			   }
+			   else{
+				   counterX++;
+				   labelX2->Text = Convert::ToString(counterX);
+				   master = "X";
+			   }
+
+			   MessageBox::Show("Winner: " + master, "Circles and Crosses", MessageBoxButtons::OK, MessageBoxIcon::Asterisk);
 		   }
 
 	   }
 
+private: Void restartGame()
+			  {
+				  for each (Control ^ element in this->Controls)
+				  {
+					  try{
+						  PictureBox^ image = (PictureBox^)element;
+						  image->Enabled = true;
+						  image->Tag = "?";
+						  image->Image = imageList1->Images[0];
+					  }
+					  catch (...)
+					  {
 
-private: System::Void btnNewGame_Click(System::Object^ sender, System::EventArgs^ e) {\
-	for each (Control ^ element in this->Controls)
-	{
-		try
-		{
-			PictureBox^ image = (PictureBox^)element;
-			image->Enabled = true;
-			image->Tag = "?";
-			image->Image = imageList1->Images[0];
-		}
-		catch (...)
-		{
+					  }
+				  }
+			  }
 
-		}
-	
-	}
+private: System::Void btnNewGame_Click(System::Object^ sender, System::EventArgs^ e) {
+	winner = false;
+	restartGame();
+}
+private: System::Void btnReset_Click(System::Object^ sender, System::EventArgs^ e) {
+	winner = false;
+	restartGame();
+	counterO = 0;
+	counterX = 0;
+	labelO2->Text = "0";
+	labelX2->Text = "0";
 }
 };
 }
