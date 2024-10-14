@@ -34,6 +34,11 @@ namespace Calculator {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label1;
+
+
+	protected:
 
 	private:
 		/// <summary>
@@ -49,21 +54,60 @@ namespace Calculator {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AboutMe::typeid));
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(93, 226);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Close";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AboutMe::button1_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label1->Location = System::Drawing::Point(12, 63);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(92, 31);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"label1";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label1->Click += gcnew System::EventHandler(this, &AboutMe::label1_Click);
 			// 
 			// AboutMe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->button1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"AboutMe";
 			this->Text = L"AboutMe";
+			this->Load += gcnew System::EventHandler(this, &AboutMe::AboutMe_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void AboutMe_Load(System::Object^ sender, System::EventArgs^ e) {
+		label1->Text = "Calculator Program\nAuthor: Ksynioo\n2024";
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+		label1->Text = "Calculator Program\nAuthor: Ksynioo\n2024";
+		
+	}
 	};
 }

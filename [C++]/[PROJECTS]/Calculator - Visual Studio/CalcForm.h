@@ -203,7 +203,11 @@ private: System::Void windowToolStripMenuItem_Click(System::Object^ sender, Syst
 	CalcForm::FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 }
 private: System::Void closeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
+	if (MessageBox::Show("Are you sure you want to exit?", "Calculator", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes)
+	{
+		Application::Exit();
+	}
+	
 }
 };
 }
