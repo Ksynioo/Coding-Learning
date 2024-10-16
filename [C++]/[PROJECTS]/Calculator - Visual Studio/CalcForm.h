@@ -239,6 +239,7 @@ namespace Calculator {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &CalcForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -252,6 +253,7 @@ namespace Calculator {
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"2";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &CalcForm::button2_Click);
 			// 
 			// button3
 			// 
@@ -265,6 +267,7 @@ namespace Calculator {
 			this->button3->TabIndex = 4;
 			this->button3->Text = L"3";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &CalcForm::button3_Click);
 			// 
 			// button4
 			// 
@@ -278,6 +281,7 @@ namespace Calculator {
 			this->button4->TabIndex = 7;
 			this->button4->Text = L"6";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &CalcForm::button4_Click);
 			// 
 			// button5
 			// 
@@ -291,6 +295,7 @@ namespace Calculator {
 			this->button5->TabIndex = 6;
 			this->button5->Text = L"5";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &CalcForm::button5_Click);
 			// 
 			// button6
 			// 
@@ -304,6 +309,7 @@ namespace Calculator {
 			this->button6->TabIndex = 5;
 			this->button6->Text = L"4";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &CalcForm::button6_Click);
 			// 
 			// button7
 			// 
@@ -317,6 +323,7 @@ namespace Calculator {
 			this->button7->TabIndex = 10;
 			this->button7->Text = L"9";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &CalcForm::button7_Click);
 			// 
 			// button8
 			// 
@@ -330,6 +337,7 @@ namespace Calculator {
 			this->button8->TabIndex = 9;
 			this->button8->Text = L"8";
 			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &CalcForm::button8_Click);
 			// 
 			// button9
 			// 
@@ -343,6 +351,7 @@ namespace Calculator {
 			this->button9->TabIndex = 8;
 			this->button9->Text = L"7";
 			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Click += gcnew System::EventHandler(this, &CalcForm::button9_Click);
 			// 
 			// button10
 			// 
@@ -356,6 +365,7 @@ namespace Calculator {
 			this->button10->TabIndex = 11;
 			this->button10->Text = L"0";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &CalcForm::button10_Click);
 			// 
 			// button11
 			// 
@@ -369,6 +379,7 @@ namespace Calculator {
 			this->button11->TabIndex = 12;
 			this->button11->Text = L",";
 			this->button11->UseVisualStyleBackColor = false;
+			this->button11->Click += gcnew System::EventHandler(this, &CalcForm::button11_Click);
 			// 
 			// button12
 			// 
@@ -642,6 +653,17 @@ namespace Calculator {
 
 		}
 #pragma endregion
+		private: Void Execute(String^ number)
+		{
+			if (textBox1->Text == "0")
+			{
+				textBox1->Text = number;
+			}
+			else
+			{
+				this->textBox1->Text += number;
+			}
+		}
 	private: System::Void CalcForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -674,6 +696,39 @@ private: System::Void closeToolStripMenuItem_Click(System::Object^ sender, Syste
 		Application::Exit();
 	}
 	
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("1");
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("2");
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("3");
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("4");
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("5");
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("6");
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("9");
+}
+private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("8");
+}
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("7");
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute("0");
+}
+private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
+	Execute(",");
 }
 };
 }
