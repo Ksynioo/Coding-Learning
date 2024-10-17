@@ -393,6 +393,7 @@ namespace Calculator {
 			this->button12->TabIndex = 13;
 			this->button12->Text = L"+";
 			this->button12->UseVisualStyleBackColor = false;
+			this->button12->Click += gcnew System::EventHandler(this, &CalcForm::button12_Click);
 			// 
 			// button13
 			// 
@@ -406,6 +407,7 @@ namespace Calculator {
 			this->button13->TabIndex = 14;
 			this->button13->Text = L"-";
 			this->button13->UseVisualStyleBackColor = false;
+			this->button13->Click += gcnew System::EventHandler(this, &CalcForm::button13_Click);
 			// 
 			// button14
 			// 
@@ -419,6 +421,7 @@ namespace Calculator {
 			this->button14->TabIndex = 15;
 			this->button14->Text = L"x";
 			this->button14->UseVisualStyleBackColor = false;
+			this->button14->Click += gcnew System::EventHandler(this, &CalcForm::button14_Click);
 			// 
 			// button15
 			// 
@@ -458,6 +461,7 @@ namespace Calculator {
 			this->button17->TabIndex = 18;
 			this->button17->Text = L"/";
 			this->button17->UseVisualStyleBackColor = false;
+			this->button17->Click += gcnew System::EventHandler(this, &CalcForm::button17_Click);
 			// 
 			// button18
 			// 
@@ -652,10 +656,15 @@ namespace Calculator {
 			this->PerformLayout();
 
 		}
+
+		double first, second, result;
+		char operation;
+		bool status = false;
+
 #pragma endregion
 		private: Void Execute(String^ number)
 		{
-			if (textBox1->Text == "0")
+			if (textBox1->Text == "0" ||  status)
 			{
 				textBox1->Text = number;
 			}
@@ -663,7 +672,9 @@ namespace Calculator {
 			{
 				this->textBox1->Text += number;
 			}
+			status = false;
 		}
+				
 	private: System::Void CalcForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -729,6 +740,28 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 }
 private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
 	Execute(",");
+}
+private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	operation = '+';
+	//this->textBox1->Text = "0";
+	status = true;
+}
+private: System::Void button14_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	operation = '*';
+	status = true;
+}
+private: System::Void button13_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	operation = '-';
+	status = true;
+}
+private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	operation = '/';
+
+	status = true;
 }
 };
 }
