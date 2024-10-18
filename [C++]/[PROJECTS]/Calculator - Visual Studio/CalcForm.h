@@ -435,6 +435,7 @@ namespace Calculator {
 			this->button15->TabIndex = 16;
 			this->button15->Text = L"C";
 			this->button15->UseVisualStyleBackColor = false;
+			this->button15->Click += gcnew System::EventHandler(this, &CalcForm::button15_Click);
 			// 
 			// button16
 			// 
@@ -501,6 +502,7 @@ namespace Calculator {
 			this->button20->TabIndex = 21;
 			this->button20->Text = L"=";
 			this->button20->UseVisualStyleBackColor = false;
+			this->button20->Click += gcnew System::EventHandler(this, &CalcForm::button20_Click);
 			// 
 			// button21
 			// 
@@ -762,6 +764,44 @@ private: System::Void button17_Click(System::Object^ sender, System::EventArgs^ 
 	operation = '/';
 
 	status = true;
+}
+private: System::Void button20_Click(System::Object^ sender, System::EventArgs^ e) {
+	second = Convert::ToDouble(textBox1->Text);
+
+	switch (operation)
+	{
+	case '+':
+		result = first + second;
+
+	break;
+
+	case '-':
+		result = first - second;
+	break;
+
+	case '*':
+		result = first * second;
+	break;
+
+	case '/':
+		if (second == 0)
+		{
+			MessageBox::Show("You can't divide by 0");
+		}
+		else
+		{
+			result = first / second;
+		}
+	break;
+
+	}
+	this->textBox1->Text = Convert::ToString(result);
+}
+private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->textBox1->Text = "0";
+	first = 0;
+	second = 0;	
+	status = false;
 }
 };
 }
