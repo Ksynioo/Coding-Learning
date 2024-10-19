@@ -449,6 +449,7 @@ namespace Calculator {
 			this->button16->TabIndex = 17;
 			this->button16->Text = L"CE";
 			this->button16->UseVisualStyleBackColor = false;
+			this->button16->Click += gcnew System::EventHandler(this, &CalcForm::button16_Click);
 			// 
 			// button17
 			// 
@@ -476,6 +477,7 @@ namespace Calculator {
 			this->button18->TabIndex = 19;
 			this->button18->Text = L"√";
 			this->button18->UseVisualStyleBackColor = false;
+			this->button18->Click += gcnew System::EventHandler(this, &CalcForm::button18_Click);
 			// 
 			// button19
 			// 
@@ -516,6 +518,7 @@ namespace Calculator {
 			this->button21->TabIndex = 22;
 			this->button21->Text = L"a²";
 			this->button21->UseVisualStyleBackColor = false;
+			this->button21->Click += gcnew System::EventHandler(this, &CalcForm::button21_Click);
 			// 
 			// button22
 			// 
@@ -795,6 +798,7 @@ private: System::Void button20_Click(System::Object^ sender, System::EventArgs^ 
 	break;
 
 	}
+	status = true;
 	this->textBox1->Text = Convert::ToString(result);
 }
 private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -802,6 +806,22 @@ private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ 
 	first = 0;
 	second = 0;	
 	status = false;
+}
+private: System::Void button16_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->textBox1->Text = "0";
+
+}
+private: System::Void button18_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	result = Math::Sqrt(first);
+	this->textBox1->Text = Convert::ToString(result);
+	status = true; 
+}
+private: System::Void button21_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	result = Math::Pow(first, 2);
+	this->textBox1->Text = Convert::ToString(result);
+	status = true;
 }
 };
 }
