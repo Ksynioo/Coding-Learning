@@ -491,6 +491,7 @@ namespace Calculator {
 			this->button19->TabIndex = 20;
 			this->button19->Text = L"%";
 			this->button19->UseVisualStyleBackColor = false;
+			this->button19->Click += gcnew System::EventHandler(this, &CalcForm::button19_Click);
 			// 
 			// button20
 			// 
@@ -533,6 +534,7 @@ namespace Calculator {
 			this->button22->TabIndex = 23;
 			this->button22->Text = L"throw";
 			this->button22->UseVisualStyleBackColor = false;
+			this->button22->Click += gcnew System::EventHandler(this, &CalcForm::button22_Click);
 			// 
 			// button23
 			// 
@@ -546,6 +548,7 @@ namespace Calculator {
 			this->button23->TabIndex = 24;
 			this->button23->Text = L"margin";
 			this->button23->UseVisualStyleBackColor = false;
+			this->button23->Click += gcnew System::EventHandler(this, &CalcForm::button23_Click);
 			// 
 			// button24
 			// 
@@ -559,6 +562,7 @@ namespace Calculator {
 			this->button24->TabIndex = 25;
 			this->button24->Text = L"brutto->netto";
 			this->button24->UseVisualStyleBackColor = false;
+			this->button24->Click += gcnew System::EventHandler(this, &CalcForm::button24_Click);
 			// 
 			// button25
 			// 
@@ -572,6 +576,7 @@ namespace Calculator {
 			this->button25->TabIndex = 26;
 			this->button25->Text = L"netto->brutto";
 			this->button25->UseVisualStyleBackColor = false;
+			this->button25->Click += gcnew System::EventHandler(this, &CalcForm::button25_Click);
 			// 
 			// button26
 			// 
@@ -795,7 +800,33 @@ private: System::Void button20_Click(System::Object^ sender, System::EventArgs^ 
 		{
 			result = first / second;
 		}
+		break;
+
+	case '%':
+		result = (first / 100) * second;
+
 	break;
+
+	case 'b':
+		result = first * (1 + (second / 100));
+	break;
+
+	case 'n':
+		result = first / (1 + (second / 100));
+	break;
+
+	case 'm':
+		result = (second - first) / second * 100;
+	break;
+
+	case 't':
+		result = (second - first) / first * 100;
+	break;
+	
+	default:
+		//No action
+		break;
+	
 
 	}
 	status = true;
@@ -822,6 +853,32 @@ private: System::Void button21_Click(System::Object^ sender, System::EventArgs^ 
 	result = Math::Pow(first, 2);
 	this->textBox1->Text = Convert::ToString(result);
 	status = true;
+}
+private: System::Void button19_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	status = true;
+	operation = '%';
+}
+private: System::Void button25_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	status = true;
+	operation = 'b';
+}
+private: System::Void button24_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	status = true;
+	operation = 'n';
+}
+private: System::Void button23_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	status = true;
+	operation = 'm';
+
+}
+private: System::Void button22_Click(System::Object^ sender, System::EventArgs^ e) {
+	first = Convert::ToDouble(textBox1->Text);
+	status = true;
+	operation = 't';
 }
 };
 }
