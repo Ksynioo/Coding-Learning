@@ -590,6 +590,7 @@ namespace Calculator {
 			this->button26->TabIndex = 29;
 			this->button26->Text = L"addition";
 			this->button26->UseVisualStyleBackColor = false;
+			this->button26->Click += gcnew System::EventHandler(this, &CalcForm::button26_Click);
 			// 
 			// button27
 			// 
@@ -603,6 +604,7 @@ namespace Calculator {
 			this->button27->TabIndex = 28;
 			this->button27->Text = L"substraction";
 			this->button27->UseVisualStyleBackColor = false;
+			this->button27->Click += gcnew System::EventHandler(this, &CalcForm::button27_Click);
 			// 
 			// button28
 			// 
@@ -616,6 +618,7 @@ namespace Calculator {
 			this->button28->TabIndex = 27;
 			this->button28->Text = L"multiplication";
 			this->button28->UseVisualStyleBackColor = false;
+			this->button28->Click += gcnew System::EventHandler(this, &CalcForm::button28_Click);
 			// 
 			// CalcForm
 			// 
@@ -667,7 +670,7 @@ namespace Calculator {
 
 		}
 
-		double first, second, result;
+		double first, second, result, testing;
 		char operation;
 		bool status = false;
 
@@ -701,8 +704,10 @@ private: System::Void financialToolStripMenuItem_Click(System::Object^ sender, S
 	CalcForm::Height = 400;
 }
 private: System::Void gameToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	CalcForm::Width = 300;
+	CalcForm::Width = 420;
 	CalcForm::Height = 650;
+
+	this->textBox1->Text = "Let's Play?";
 }
 private: System::Void pinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	CalcForm::FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -823,14 +828,28 @@ private: System::Void button20_Click(System::Object^ sender, System::EventArgs^ 
 		result = (second - first) / first * 100;
 	break;
 	
+	case 'x':
+		if (second == testing)
+		{
+			this->textBox1->Text = "Great!";
+		}
+		else
+		{
+			this->textBox1->Text = "Bad...";
+		}
+	break;
+
 	default:
 		//No action
 		break;
-	
-
 	}
 	status = true;
-	this->textBox1->Text = Convert::ToString(result);
+	if (operation != 'x')
+	{
+		this->textBox1->Text = Convert::ToString(result);
+	}
+
+	
 }
 private: System::Void button15_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->textBox1->Text = "0";
@@ -879,6 +898,34 @@ private: System::Void button22_Click(System::Object^ sender, System::EventArgs^ 
 	first = Convert::ToDouble(textBox1->Text);
 	status = true;
 	operation = 't';
+}
+private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+	Random^ draw = gcnew Random;
+	first = draw->Next(1, 20);
+	second = draw->Next(1, 20);
+	testing = first + second;
+	this->textBox1->Text = first + " + " + second + " = ?";
+	status = true;
+	operation = 'x';
+
+}
+private: System::Void button27_Click(System::Object^ sender, System::EventArgs^ e) {
+	Random^ draw = gcnew Random;
+	first = draw->Next(1, 20);
+	second = draw->Next(1, first);
+	testing = first - second;
+	this->textBox1->Text = first + " - " + second + " = ?";
+	status = true;
+	operation = 'x';
+}
+private: System::Void button28_Click(System::Object^ sender, System::EventArgs^ e) {
+	Random^ draw = gcnew Random;
+	first = draw->Next(1, 10);
+	second = draw->Next(1, 10);
+	testing = first * second;
+	this->textBox1->Text = first + " * " + second + " = ?";
+	status = true;
+	operation = 'x';
 }
 };
 }
