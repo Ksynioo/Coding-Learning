@@ -19,6 +19,8 @@ namespace Calculator {
 		CalcForm(void)
 		{
 			InitializeComponent();
+			CalcForm::Width = 430;
+			CalcForm::Height = 450;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -188,21 +190,21 @@ namespace Calculator {
 			// standardToolStripMenuItem
 			// 
 			this->standardToolStripMenuItem->Name = L"standardToolStripMenuItem";
-			this->standardToolStripMenuItem->Size = System::Drawing::Size(121, 22);
+			this->standardToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->standardToolStripMenuItem->Text = L"Standard";
 			this->standardToolStripMenuItem->Click += gcnew System::EventHandler(this, &CalcForm::standardToolStripMenuItem_Click);
 			// 
 			// financialToolStripMenuItem
 			// 
 			this->financialToolStripMenuItem->Name = L"financialToolStripMenuItem";
-			this->financialToolStripMenuItem->Size = System::Drawing::Size(121, 22);
+			this->financialToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->financialToolStripMenuItem->Text = L"Financial";
 			this->financialToolStripMenuItem->Click += gcnew System::EventHandler(this, &CalcForm::financialToolStripMenuItem_Click);
 			// 
 			// gameToolStripMenuItem
 			// 
 			this->gameToolStripMenuItem->Name = L"gameToolStripMenuItem";
-			this->gameToolStripMenuItem->Size = System::Drawing::Size(121, 22);
+			this->gameToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->gameToolStripMenuItem->Text = L"Game";
 			this->gameToolStripMenuItem->Click += gcnew System::EventHandler(this, &CalcForm::gameToolStripMenuItem_Click);
 			// 
@@ -222,10 +224,11 @@ namespace Calculator {
 			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox1->Location = System::Drawing::Point(12, 27);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(300, 55);
+			this->textBox1->Size = System::Drawing::Size(390, 55);
 			this->textBox1->TabIndex = 1;
 			this->textBox1->Text = L"0";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &CalcForm::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -527,7 +530,7 @@ namespace Calculator {
 			this->button22->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button22->Location = System::Drawing::Point(408, 339);
+			this->button22->Location = System::Drawing::Point(496, 339);
 			this->button22->Name = L"button22";
 			this->button22->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->button22->Size = System::Drawing::Size(126, 60);
@@ -542,7 +545,7 @@ namespace Calculator {
 			this->button23->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button23->Location = System::Drawing::Point(408, 273);
+			this->button23->Location = System::Drawing::Point(496, 273);
 			this->button23->Name = L"button23";
 			this->button23->Size = System::Drawing::Size(126, 60);
 			this->button23->TabIndex = 24;
@@ -556,7 +559,7 @@ namespace Calculator {
 			this->button24->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button24->Location = System::Drawing::Point(408, 207);
+			this->button24->Location = System::Drawing::Point(496, 207);
 			this->button24->Name = L"button24";
 			this->button24->Size = System::Drawing::Size(126, 60);
 			this->button24->TabIndex = 25;
@@ -570,7 +573,7 @@ namespace Calculator {
 			this->button25->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button25->Location = System::Drawing::Point(408, 141);
+			this->button25->Location = System::Drawing::Point(496, 141);
 			this->button25->Name = L"button25";
 			this->button25->Size = System::Drawing::Size(126, 60);
 			this->button25->TabIndex = 26;
@@ -695,20 +698,34 @@ namespace Calculator {
 		Ame->Show();
 	}
 private: System::Void standardToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	CalcForm::Width = 300;
-	CalcForm::Height = 400;
-
+	CalcForm::Width = 430;
+	CalcForm::Height = 450;
+	buttons(true);
 }
 private: System::Void financialToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	CalcForm::Width = 460;
-	CalcForm::Height = 400;
+	CalcForm::Width = 650;
+	CalcForm::Height = 450;
+	buttons(true);
 }
 private: System::Void gameToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	CalcForm::Width = 420;
-	CalcForm::Height = 650;
-
+	CalcForm::Width = 430;
+	CalcForm::Height = 530;
 	this->textBox1->Text = "Let's Play?";
+	buttons(false);
 }
+	private: Void buttons(bool view)
+	{
+		button14->Visible = view;
+		button13->Visible = view;
+		button12->Visible = view;
+		button18->Visible = view;
+		button16->Visible = view;
+		button15->Visible = view;
+		button19->Visible = view;
+		button21->Visible = view;
+		button17->Visible = view;
+	} ;
+
 private: System::Void pinToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	CalcForm::FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 	TopMost = true;
@@ -926,6 +943,8 @@ private: System::Void button28_Click(System::Object^ sender, System::EventArgs^ 
 	this->textBox1->Text = first + " * " + second + " = ?";
 	status = true;
 	operation = 'x';
+}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
