@@ -228,7 +228,6 @@ namespace Calculator {
 			this->textBox1->TabIndex = 1;
 			this->textBox1->Text = L"0";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &CalcForm::textBox1_TextChanged);
 			// 
 			// button1
 			// 
@@ -916,35 +915,37 @@ private: System::Void button22_Click(System::Object^ sender, System::EventArgs^ 
 	status = true;
 	operation = 't';
 }
-private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
-	Random^ draw = gcnew Random;
-	first = draw->Next(1, 20);
-	second = draw->Next(1, 20);
-	testing = first + second;
-	this->textBox1->Text = first + " + " + second + " = ?";
-	status = true;
-	operation = 'x';
 
+	private: void lottery(int start, int stop, String^ character)
+	{
+		Random^ draw = gcnew Random;
+		first = draw->Next(start, stop);
+		if (character != "-")
+		{
+			second = draw->Next(start, stop);
+		}
+		else
+		{
+			second = draw->Next(start, first);
+		}
+
+		this->textBox1->Text = first + character + second + " = ?";
+		status = true;
+		operation = 'x';
+	};
+
+private: System::Void button26_Click(System::Object^ sender, System::EventArgs^ e) {
+	lottery(1, 20, "+");
+	testing = first + second;
 }
 private: System::Void button27_Click(System::Object^ sender, System::EventArgs^ e) {
-	Random^ draw = gcnew Random;
-	first = draw->Next(1, 20);
-	second = draw->Next(1, first);
+	lottery(1, 20, "-");
 	testing = first - second;
-	this->textBox1->Text = first + " - " + second + " = ?";
-	status = true;
-	operation = 'x';
 }
 private: System::Void button28_Click(System::Object^ sender, System::EventArgs^ e) {
-	Random^ draw = gcnew Random;
-	first = draw->Next(1, 10);
-	second = draw->Next(1, 10);
+	lottery(1, 10, "*");
 	testing = first * second;
-	this->textBox1->Text = first + " * " + second + " = ?";
-	status = true;
-	operation = 'x';
 }
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+
 };
 }
