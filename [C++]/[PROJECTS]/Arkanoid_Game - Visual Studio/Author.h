@@ -34,6 +34,8 @@ namespace ArkanoidGame {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::RichTextBox^ richTextBox1;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,12 +50,32 @@ namespace ArkanoidGame {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Author";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->SuspendLayout();
+			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Location = System::Drawing::Point(0, 0);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->ReadOnly = true;
+			this->richTextBox1->Size = System::Drawing::Size(181, 157);
+			this->richTextBox1->TabIndex = 0;
+			this->richTextBox1->Text = L"    Arkanoid\nAuthor: Ksynioo\n       2024";
+			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &Author::richTextBox1_TextChanged);
+			// 
+			// Author
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(181, 157);
+			this->Controls->Add(this->richTextBox1);
+			this->Name = L"Author";
+			this->Text = L"Arkanoid";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

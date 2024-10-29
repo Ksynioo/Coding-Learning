@@ -137,6 +137,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Author.resx">
+      <DependentUpon>Author.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Greeting.resx">
       <DependentUpon>Greeting.h</DependentUpon>
     </EmbeddedResource>
