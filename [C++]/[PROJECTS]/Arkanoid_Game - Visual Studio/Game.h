@@ -141,6 +141,16 @@ namespace ArkanoidGame {
 
 		}
 
+		//platform hitting
+		if ((ball->Left > platform->Left) && (ball->Left < platform->Left + platform->Width) && (ball->Top + ball->Height > platform->Top))
+		{
+			y = -y;
+		}
+		else if (ball->Top >= platform->Top + 5)
+		{
+			timer1->Enabled = false;
+			MessageBox::Show("Ball fall out!", "Arkanoid");
+		}
 	}
 	private: System::Void movePlatform(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		 
