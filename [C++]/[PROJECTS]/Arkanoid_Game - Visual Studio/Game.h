@@ -38,6 +38,8 @@ namespace ArkanoidGame {
 	protected:
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::PictureBox^ platform;
+	private: System::Windows::Forms::Label^ lblPoints;
+	private: System::Windows::Forms::Label^ lblLife;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -58,6 +60,8 @@ namespace ArkanoidGame {
 			this->ball = (gcnew System::Windows::Forms::PictureBox());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->platform = (gcnew System::Windows::Forms::PictureBox());
+			this->lblPoints = (gcnew System::Windows::Forms::Label());
+			this->lblLife = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ball))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->platform))->BeginInit();
 			this->SuspendLayout();
@@ -91,6 +95,32 @@ namespace ArkanoidGame {
 			this->platform->TabIndex = 1;
 			this->platform->TabStop = false;
 			// 
+			// lblPoints
+			// 
+			this->lblPoints->AutoSize = true;
+			this->lblPoints->BackColor = System::Drawing::Color::Transparent;
+			this->lblPoints->Font = (gcnew System::Drawing::Font(L"Bahnschrift Light", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->lblPoints->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->lblPoints->Location = System::Drawing::Point(523, 16);
+			this->lblPoints->Name = L"lblPoints";
+			this->lblPoints->Size = System::Drawing::Size(58, 33);
+			this->lblPoints->TabIndex = 2;
+			this->lblPoints->Text = L"000";
+			// 
+			// lblLife
+			// 
+			this->lblLife->AutoSize = true;
+			this->lblLife->BackColor = System::Drawing::Color::Transparent;
+			this->lblLife->Font = (gcnew System::Drawing::Font(L"Bahnschrift Light", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->lblLife->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->lblLife->Location = System::Drawing::Point(659, 16);
+			this->lblLife->Name = L"lblLife";
+			this->lblLife->Size = System::Drawing::Size(29, 33);
+			this->lblLife->TabIndex = 3;
+			this->lblLife->Text = L"3";
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -98,6 +128,8 @@ namespace ArkanoidGame {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(704, 501);
+			this->Controls->Add(this->lblLife);
+			this->Controls->Add(this->lblPoints);
 			this->Controls->Add(this->platform);
 			this->Controls->Add(this->ball);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -113,8 +145,10 @@ namespace ArkanoidGame {
 
 		}
 
-		int x = 0, y = 0;
+		int x = 0, y = 0, lifes = 3, points = 0;
 		char direction;
+
+
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
@@ -123,7 +157,7 @@ namespace ArkanoidGame {
 		ball->Top += y;
 
 		if (ball->Left >= Game::Width - ball->Width) x = -x;
-		if (ball->Top >= Game::Height - ball->Height) y = -y;
+		//if (ball->Top >= Game::Height - ball->Height) y = -y;
 		if (ball->Top <= 75) y = -y;
 		if (ball->Left <= 5) x = -x;
 
@@ -146,10 +180,18 @@ namespace ArkanoidGame {
 		{
 			y = -y;
 		}
+		//loss of the ball
 		else if (ball->Top >= platform->Top + 5)
 		{
 			timer1->Enabled = false;
 			MessageBox::Show("Ball fall out!", "Arkanoid");
+			ball->Visible = false;
+			points -= 50;
+			lifes -= 1;
+
+			lblPoints->Text = "" + points;
+			lblLife->Text = "" + lifes;
+
 		}
 	}
 	private: System::Void movePlatform(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
