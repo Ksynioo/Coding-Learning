@@ -147,6 +147,7 @@ namespace ArkanoidGame {
 
 		int x = 0, y = 0, lifes = 3, points = 0;
 		char direction;
+		bool block = false;
 
 
 #pragma endregion
@@ -166,13 +167,14 @@ namespace ArkanoidGame {
 		if (direction == 'R' && (platform->Left<Game::Width - platform->Width - 30))
 		{
 			platform->Left += 20;
+			if((x == 0) && (y == 0)) ball->Left +=20;
 		}
 
 		//platform movement left
 		if (direction == 'L' && (platform->Left > 10))
 		{
 			platform->Left -= 20;
-
+			if ((x == 0) && (y == 0)) ball->Left -= 20;
 		}
 
 		//platform hitting
@@ -184,13 +186,22 @@ namespace ArkanoidGame {
 		else if (ball->Top >= platform->Top + 5)
 		{
 			timer1->Enabled = false;
-			MessageBox::Show("Ball fall out!", "Arkanoid");
 			ball->Visible = false;
+			MessageBox::Show("Ball fall out!", "Arkanoid");
+
+			ball->Top = platform->Top - ball->Height - 3;
+			ball->Left = platform->Left + platform->Width/2;
+			x = 0;
+			y = 0;
+
+			timer1->Enabled = true;
+			ball->Visible = true;
 			points -= 50;
 			lifes -= 1;
 
 			lblPoints->Text = "" + points;
 			lblLife->Text = "" + lifes;
+			block = false;
 
 		}
 	}
@@ -198,10 +209,11 @@ namespace ArkanoidGame {
 		 
 		if (e->KeyCode == Keys::Left) direction = 'L';
 		if (e->KeyCode == Keys::Right) direction = 'R';
-		if (e->KeyCode == Keys::Space)
+		if ((e->KeyCode == Keys::Space) && (block == false))
 		{
 			x = -5;
 			y = -5;
+			block = true;
 		}
 	}													 
 private: System::Void Game_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
