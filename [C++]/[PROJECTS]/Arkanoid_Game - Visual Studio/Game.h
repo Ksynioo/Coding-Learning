@@ -40,6 +40,9 @@ namespace ArkanoidGame {
 	private: System::Windows::Forms::PictureBox^ platform;
 	private: System::Windows::Forms::Label^ lblPoints;
 	private: System::Windows::Forms::Label^ lblLife;
+	private: System::Windows::Forms::PictureBox^ picLoss;
+	private: System::Windows::Forms::PictureBox^ picEnd;
+	private: System::Windows::Forms::PictureBox^ picAgain;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -62,8 +65,14 @@ namespace ArkanoidGame {
 			this->platform = (gcnew System::Windows::Forms::PictureBox());
 			this->lblPoints = (gcnew System::Windows::Forms::Label());
 			this->lblLife = (gcnew System::Windows::Forms::Label());
+			this->picLoss = (gcnew System::Windows::Forms::PictureBox());
+			this->picEnd = (gcnew System::Windows::Forms::PictureBox());
+			this->picAgain = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ball))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->platform))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picLoss))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picEnd))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAgain))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// ball
@@ -121,6 +130,47 @@ namespace ArkanoidGame {
 			this->lblLife->TabIndex = 3;
 			this->lblLife->Text = L"3";
 			// 
+			// picLoss
+			// 
+			this->picLoss->BackColor = System::Drawing::Color::Transparent;
+			this->picLoss->Cursor = System::Windows::Forms::Cursors::Arrow;
+			this->picLoss->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picLoss.Image")));
+			this->picLoss->Location = System::Drawing::Point(453, 301);
+			this->picLoss->Name = L"picLoss";
+			this->picLoss->Size = System::Drawing::Size(251, 200);
+			this->picLoss->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->picLoss->TabIndex = 4;
+			this->picLoss->TabStop = false;
+			this->picLoss->Visible = false;
+			// 
+			// picEnd
+			// 
+			this->picEnd->BackColor = System::Drawing::Color::Transparent;
+			this->picEnd->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picEnd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picEnd.Image")));
+			this->picEnd->Location = System::Drawing::Point(248, 301);
+			this->picEnd->Name = L"picEnd";
+			this->picEnd->Size = System::Drawing::Size(199, 85);
+			this->picEnd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->picEnd->TabIndex = 5;
+			this->picEnd->TabStop = false;
+			this->picEnd->Visible = false;
+			this->picEnd->Click += gcnew System::EventHandler(this, &Game::picEnd_Click);
+			// 
+			// picAgain
+			// 
+			this->picAgain->BackColor = System::Drawing::Color::Transparent;
+			this->picAgain->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picAgain->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAgain.Image")));
+			this->picAgain->Location = System::Drawing::Point(248, 209);
+			this->picAgain->Name = L"picAgain";
+			this->picAgain->Size = System::Drawing::Size(199, 86);
+			this->picAgain->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->picAgain->TabIndex = 6;
+			this->picAgain->TabStop = false;
+			this->picAgain->Visible = false;
+			this->picAgain->Click += gcnew System::EventHandler(this, &Game::picAgain_Click);
+			// 
 			// Game
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -128,6 +178,9 @@ namespace ArkanoidGame {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(704, 501);
+			this->Controls->Add(this->picAgain);
+			this->Controls->Add(this->picEnd);
+			this->Controls->Add(this->picLoss);
 			this->Controls->Add(this->lblLife);
 			this->Controls->Add(this->lblPoints);
 			this->Controls->Add(this->platform);
@@ -140,6 +193,9 @@ namespace ArkanoidGame {
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Game::Game_KeyUp);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ball))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->platform))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picLoss))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picEnd))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAgain))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -187,22 +243,29 @@ namespace ArkanoidGame {
 		{
 			timer1->Enabled = false;
 			ball->Visible = false;
-			MessageBox::Show("Ball fall out!", "Arkanoid");
-
-			ball->Top = platform->Top - ball->Height - 3;
-			ball->Left = platform->Left + platform->Width/2;
-			x = 0;
-			y = 0;
-
-			timer1->Enabled = true;
-			ball->Visible = true;
 			points -= 50;
 			lifes -= 1;
-
 			lblPoints->Text = "" + points;
-			lblLife->Text = "" + lifes;
-			block = false;
 
+			if (lifes > 0)
+			{
+				MessageBox::Show("Ball fall out!", "Arkanoid");
+				ball->Top = platform->Top - ball->Height - 3;
+				ball->Left = platform->Left + platform->Width / 2;
+				x = 0;
+				y = 0;
+				timer1->Enabled = true;
+				ball->Visible = true;	
+				lblLife->Text = "" + lifes;
+				block = false;
+			}
+			else
+			{
+				lblLife->Text = ":(";
+				picLoss->Visible = true;
+				picEnd->Visible = true;
+				picAgain->Visible = true;
+			}
 		}
 	}
 	private: System::Void movePlatform(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -218,6 +281,36 @@ namespace ArkanoidGame {
 	}													 
 private: System::Void Game_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	direction = 'S';
+}
+private: System::Void picEnd_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	this->Close();
+
+
+}
+private: System::Void picAgain_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	lifes = 3;
+	points = 0;
+
+	lblPoints->Text = "" + points;
+	lblLife->Text = "" + lifes;
+	picLoss->Visible = false;
+	picEnd->Visible = false;
+	picAgain->Visible = false;
+
+	ball->Top = platform->Top - ball->Height - 3;
+	ball->Left = platform->Left + platform->Width / 2;
+
+	ball->Visible = true;
+	timer1->Enabled = true;
+
+	x = 0;
+	y = 0;
+
+	block = false;
+
+
 }
 };
 }
