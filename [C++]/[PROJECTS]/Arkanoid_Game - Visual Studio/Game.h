@@ -314,16 +314,32 @@ namespace ArkanoidGame {
 				(ball->Left < ball->Width + brick->Width) &&
 				(brick->Visible == true))
 			{ 
+
 				y = -y;
-				brick->Visible = false;
+
+				if (brick->Tag != "t")
+				{
+					brick->Visible = false;
+					points += 10;
+				}
+				else
+				{
+					PictureBox^ brokenBrick = (PictureBox^)brick;
+					brokenBrick->Image = imageList1->Images[2];
+					brick->Tag = "ct";
+					points += 20;
+				}
+				
+
 			}
+			lblPoints->Text = "" + points;
 		}
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 		for each (Control^ element in this->Controls)
 		{
-			if (element->Tag == "c" || element->Tag == "t")
+			if (element->Tag == "c" || element->Tag == "t" || element->Tag == "ct")
 			{
 				hit_Brick(element);
 			}
