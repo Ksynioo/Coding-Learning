@@ -299,7 +299,7 @@ namespace ArkanoidGame {
 
 		}
 
-		int x = 0, y = 0, lifes = 3, points = 0;
+		int x = 0, y = 0, lifes = 3, points = 0, bricks = 0;
 		char direction;
 		bool block = false;
 
@@ -321,6 +321,7 @@ namespace ArkanoidGame {
 				{
 					brick->Visible = false;
 					points += 10;
+					bricks += 1;
 				}
 				else
 				{
@@ -333,6 +334,14 @@ namespace ArkanoidGame {
 
 			}
 			lblPoints->Text = "" + points;
+			if (bricks == 5)
+			{
+				timer1->Enabled = false;
+				picEnd->Visible = true;
+				picAgain->Visible = true;
+				bricks = 0;
+				Game::BackgroundImage = Image::FromFile("../grafiki/tlo_koniec.png");
+			}
 		}
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -445,6 +454,7 @@ private: System::Void picAgain_Click(System::Object^ sender, System::EventArgs^ 
 	y = 0;
 
 	block = false;
+	Game::BackgroundImage = Image::FromFile("../grafiki/tlo_gra_01.png");
 
 
 }
