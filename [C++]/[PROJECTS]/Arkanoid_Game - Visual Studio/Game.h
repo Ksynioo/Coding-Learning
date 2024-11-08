@@ -456,6 +456,20 @@ private: System::Void picAgain_Click(System::Object^ sender, System::EventArgs^ 
 	block = false;
 	Game::BackgroundImage = Image::FromFile("../grafiki/tlo_gra_01.png");
 
+	for each(Control^ elements in this->Controls)
+	{
+		if (elements->Tag == "c" || elements->Tag == "t" || elements->Tag == "ct")
+		{
+			elements->Visible = true;
+			if (elements->Tag == "ct")
+			{
+				elements->Tag == "t";
+				PictureBox^ image = (PictureBox^)elements;
+				image->Image = imageList1->Images[1];
+			}
+		}
+	}
+
 
 }
 };
